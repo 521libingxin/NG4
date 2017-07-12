@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+	</head>
+	<body>
+		<button onclick="page1()">page1</button>
+		<button onclick="page2()">page2</button>
+		<div id="main_box">
+			
+		</div>
+		<div id="main_box2">
+			
+		</div>
+		<script>
+			function parents(){
+				this.lists = "<button class='show'>show</button>";
+				//this.newele = document.createElement("div");
+				this.init = function(eleid){
+					//var newele = document.createElement("div");
+					/*$(this.newele).html(this.lists);
+					$("#"+eleid).html(this.newele);
+					this.fun(this.newele);*/
+					var newele = document.createElement("div");
+					$(newele).html(this.lists);
+					$("#"+eleid).html(newele);
+					this.fun(newele);
+					newele = null;
+					console.log(newele);
+				};
+				this.fun = function(ele){
+					$(ele).on("click",".show",function(){
+						console.log("show");
+					});
+					ele = null;
+					console.log(ele);
+				}
+			}
+			function child(){
+				parents.call(this);
+				this.lists = "<button class='show'>show2</button>";
+			}
+			var t_new_p = new parents();
+			
+			var t_new_c = new child();
+			function page1(){
+				t_new_p.init("main_box");
+				t_new_p.init("main_box2");
+			}
+			function page2(){
+				t_new_c.init("main_box");
+			}
+			page1();
+		</script>
+	</body>
+</html>

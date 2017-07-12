@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*function animal(){
+				this.name = {"abc":123};
+				this.say = "动物叫声";
+				this.tosay = function(){
+					console.log(this.name + ":" + this.say);
+				}
+			}
+			var a1 = new animal();
+			var a2 = new animal();
+			a1.name.abc = 456;
+			console.log(a2.name.abc);*/
+			
+			var animalmain;
+			function animal(){
+				this.name = "动物";
+				this.say = "动物叫声";
+				this.tosay = function(){
+					console.log(this.name + ":" + this.say);
+				}
+				animalmain = this;
+			}
+			function dog(){
+				animal.call(this);
+				this.say = "旺旺"
+			}
+			var animals = new animal();
+			console.log(animals instanceof dog);
+			//var dogs = new dog();
+			animalmain.name = "变化";
+			console.log(animals);
+			//console.log(dogs);
+			/*var dog1 = new dog();
+			var dog2 = new dog();
+			animalmain.name = "变化";
+			var animals2 = new animal();
+			console.log(animal);
+			console.log(animals);
+			console.log(animals2);
+			dog1.tosay();*/
+			
+			/*function cat(){}
+			cat.prototype = new animal();
+			
+			var cat1 = new cat();
+			console.log(cat);
+			animalmain.name = "变化";
+			cat1.tosay();*/
+			
+			//var abc = new animal();
+			//console.log(abc);
+			/*var t_dog1 = new dog();
+			console.log(t_dog1);
+			animalmain.name = "变化";
+			t_dog1.tosay();*/
+			
+			/*function animal(){}
+			animal.prototype.name = {"abc":123};
+			animal.prototype.say = "动物叫声";
+			animal.prototype.tosay = function(){
+				console.log("bbbbb");
+			}
+			var t_a1 = new animal();
+			var t_a2 = new animal();
+			t_a1.name.abc = 456;
+			t_a1.tosay = function(){
+				console.log("jjjyyyjj");
+			};
+			t_a1.tosay();
+			t_a2.tosay();
+			console.log(t_a2.name);*/
+			
+			/*var animal = {
+				name: {"abc":123},
+				say:"动物叫声",
+				tosay:function(){
+					console.log(this.name+":"+this.say);
+				}
+			}
+			
+			var cat = {};
+			cat.__proto__ = animal;
+			var cat2 = {};
+			cat2.__proto__ = animal;
+			cat.name.abc = 456;
+			console.log(cat2.name.abc);*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function animal(name,say){
+				this.name = name;
+				this.say = say;
+				if(typeof this.tosay != 'function'){
+					animal.prototype.tosay = function(){
+						console.log(this.name +":"+ this.say);
+					}
+				}
+			};
+			
+			function dog(name,say){
+				animal.call(this,name,say);
+			}
+			dog.prototype = animal.prototype;
+			
+			animal.prototype.tosay = function(){
+				console.log(this.name +"-"+ this.say);
+			}
+			var t_dog = new dog("京巴","旺旺");
+			console.log(t_dog);
+			t_dog.tosay();
+		</script>
+	</body>
+</html>
